@@ -1,0 +1,9 @@
+d:\users\spoon\documents\visual studio 2017\Projects\engima_M4\engima_M4\bin\Debug\engima_M4.exe.config
+d:\users\spoon\documents\visual studio 2017\Projects\engima_M4\engima_M4\bin\Debug\engima_M4.exe
+d:\users\spoon\documents\visual studio 2017\Projects\engima_M4\engima_M4\bin\Debug\engima_M4.pdb
+d:\users\spoon\documents\visual studio 2017\Projects\engima_M4\engima_M4\obj\Debug\engima_M4.csprojResolveAssemblyReference.cache
+d:\users\spoon\documents\visual studio 2017\Projects\engima_M4\engima_M4\obj\Debug\engima_M4.Form1.resources
+d:\users\spoon\documents\visual studio 2017\Projects\engima_M4\engima_M4\obj\Debug\engima_M4.Properties.Resources.resources
+d:\users\spoon\documents\visual studio 2017\Projects\engima_M4\engima_M4\obj\Debug\engima_M4.csproj.GenerateResource.Cache
+d:\users\spoon\documents\visual studio 2017\Projects\engima_M4\engima_M4\obj\Debug\engima_M4.exe
+d:\users\spoon\documents\visual studio 2017\Projects\engima_M4\engima_M4\obj\Debug\engima_M4.pdb
