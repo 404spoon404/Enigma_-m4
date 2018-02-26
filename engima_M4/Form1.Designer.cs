@@ -898,6 +898,7 @@
             this.Liveinput.Name = "Liveinput";
             this.Liveinput.Size = new System.Drawing.Size(44, 20);
             this.Liveinput.TabIndex = 110;
+            this.Liveinput.TextChanged += new System.EventHandler(this.Liveinput_TextChanged);
             // 
             // lblcurrentIV
             // 

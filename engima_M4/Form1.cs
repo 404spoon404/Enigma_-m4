@@ -21,7 +21,8 @@ namespace engima_M4
         string[] showcurrentlables = { "lblcurrentI", "lblcurrentII", "lblcurrentIII", "lblcurrentIV" };
         int[] rotorvalue = new int[5];
         int[] rotoroffset = new int[5];
-
+        int[] rotorchoice = new int[5];
+        int livecode = 0;
 
         private void FillCombo(System.Object[] comboboxoptions, ComboBox boxname)
         {
@@ -45,8 +46,15 @@ namespace engima_M4
             lblcurrentII.Text = "A";
             lblcurrentIII.Text = "A";
             lblcurrentIV.Text = "A";
+            txbrotI.Text = "1";
+            txbrotII.Text = "2";
+            txbrotIII.Text = "3";
+            txbrotIV.Text = "10";
+            txbukw.Text = "11";
         }
-            
+        
+        
+
         private void label7_Click(object sender, EventArgs e)
         {
 
@@ -59,27 +67,99 @@ namespace engima_M4
 
         private void txbrotI_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                //check for int input, check for value <9 and check for duplicates
+                rotorchoice[0] = int.Parse(txbrotI.Text);
+                if (rotorchoice[0] > 8 | rotorchoice[0] < 1)
+                {
+                    MessageBox.Show("The number needs to be between 1 and 8");
+                }
+                else if (rotorchoice[0] == rotorchoice[1] | rotorchoice[0] == rotorchoice[2])
+                {
+                    MessageBox.Show("You can only choose every rotor once");
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void txbrotII_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                //check for int input, check for value <9 and check for duplicates
+                rotorchoice[1] = int.Parse(txbrotII.Text);
+                if (rotorchoice[1] > 8 | rotorchoice[1] <1)
+                {
+                    MessageBox.Show("The number needs to be between 1 and 8");
+                }
+                else if (rotorchoice[1] == rotorchoice[2] | rotorchoice[1] == rotorchoice[0])
+                {
+                    MessageBox.Show("You can only choose every rotor once");
+                }
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void txbrotIII_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                //check for int input, check for value <9 and check for duplicates
+                rotorchoice[2] = int.Parse(txbrotIII.Text);
+                if (rotorchoice[2] > 8 | rotorchoice[2] < 1)
+                {
+                    MessageBox.Show("The number needs to be between 1 and 8");
+                }
+                else if (rotorchoice[2] == rotorchoice[1] | rotorchoice[2] == rotorchoice[0])
+                {
+                    MessageBox.Show("You can only choose every rotor once");
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void txbrotIV_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                //check for int input, check for value <9 and check for duplicates
+                rotorchoice[3] = int.Parse(txbrotIV.Text);
+                if (rotorchoice[3] > 10 | rotorchoice[3] < 9)
+                {
+                    MessageBox.Show("The number needs to be 9 or 10");
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void txbukw_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                //check for int input, check for value <9 and check for duplicates
+                rotorchoice[2] = int.Parse(txbukw.Text);
+                if (rotorchoice[2] > 12 | rotorchoice[2] < 11)
+                {
+                    MessageBox.Show("The number needs to be 11 or 12");
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void drpintrotI_SelectedIndexChanged(object sender, EventArgs e)
@@ -107,23 +187,58 @@ namespace engima_M4
         private void drpoutrotI_SelectedIndexChanged(object sender, EventArgs e)
         {
             rotoroffset[0] = Convert.ToInt32(drpoutrotI.SelectedItem);
+            byte letter = 65;
+            lblcurrentI.Text = Convert.ToChar(letter+ rotoroffset[0]).ToString();
         }
 
         private void drpoutrotII_SelectedIndexChanged(object sender, EventArgs e)
         {
             rotoroffset[1] = Convert.ToInt32(drpoutrotII.SelectedItem);
+            byte letter = 65;
+            lblcurrentII.Text = Convert.ToChar(letter + rotoroffset[1]).ToString();
         }
 
         private void drpoutrotIII_SelectedIndexChanged(object sender, EventArgs e)
         {
             rotoroffset[2] = Convert.ToInt32(drpoutrotIII.SelectedItem);
+            byte letter = 65;
+            lblcurrentIII.Text = Convert.ToChar(letter + rotoroffset[2]).ToString();
         }
 
         private void drpoutrotIV_SelectedIndexChanged(object sender, EventArgs e)
         {
             rotoroffset[3] = Convert.ToInt32(drpoutrotIV.SelectedItem);
-                //for testing
+            byte letter = 65;
+            lblcurrentIV.Text = Convert.ToChar(letter + rotoroffset[3]).ToString();
+            //for testing
             //MessageBox.Show(rotoroffset[3].ToString());
+        }
+
+        private void Liveinput_TextChanged(object sender, EventArgs e)
+        {
+            //Takes the input from the textfield (any single character value)
+            // if a - z capitalize
+            // if A - Z make A 1, B 2 and so on
+            // if any other character ignore. (no error, just ignore)
+            // clear the text field...?
+
+
+            char halfway;
+            char.TryParse(Liveinput.Text.ToUpper(), out halfway);
+            try
+            {
+                livecode = Convert.ToByte(halfway - 64);
+            }
+            catch (Exception exception)
+            {
+
+            }
+            //for testing
+            //MessageBox.Show(livecode.ToString());
+
+            //send all variables to class enigmahardware
+            Enigmahardware test = new Enigmahardware(rotorchoice, rotorvalue, rotoroffset, livecode);
+            txbcurrentout.Text = test.ToString();
         }
     }
 }

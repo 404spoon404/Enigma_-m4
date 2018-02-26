@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace engima_M4
 {
@@ -48,6 +49,7 @@ namespace engima_M4
             }
             // advance the rotor as needed (every 26 rotations of each)
             //Duh every rotor, not one...
+            //ERROR ERROR ERROR ERROR ERROR (inputting nonsense)
             foreach (int i in rotor)
                 rotorvalue[i + 1] = RotorSwitch(rotorvalue[i], rotor[i]);
 
@@ -79,8 +81,13 @@ namespace engima_M4
             //increase the starting value (letter) according to the current rotor settings and postion 
             int startletter = (input + rotoroffset + rotorvalue) % 26;
             //Return the corresponding value from the right array
+
+            //ERROR ERROR ERROR ERROR ERROR (outputting nonsense) ERROR ERROR ERROR ERROR ERROR
+            MessageBox.Show(namerotor[startletter].ToString());
             int encrypt = namerotor[startletter];
+            MessageBox.Show(encrypt.ToString());
             return encrypt;
+            
         }
 
         //The function to convert a letter (input) to the value after the rotor, going backwards.
