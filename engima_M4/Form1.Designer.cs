@@ -444,6 +444,7 @@
             this.btnstarttext.TabIndex = 37;
             this.btnstarttext.Text = "CODE!!!";
             this.btnstarttext.UseVisualStyleBackColor = true;
+            this.btnstarttext.Click += new System.EventHandler(this.btnstarttext_Click);
             // 
             // plugboardena
             // 
@@ -1042,12 +1043,10 @@
         private System.Windows.Forms.ComboBox drpoutrotII;
         private System.Windows.Forms.ComboBox drpoutrotIII;
         private System.Windows.Forms.ComboBox drpoutrotIV;
-        private System.Windows.Forms.Label lblcurrentI;
         private System.Windows.Forms.Label lblcurrentII;
         private System.Windows.Forms.Label lblcurrentIII;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox txbcurrentout;
         private System.Windows.Forms.TextBox txbinputtext;
         private System.Windows.Forms.TextBox txboutputtext;
         private System.Windows.Forms.Label label20;
@@ -1110,6 +1109,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox Liveinput;
         private System.Windows.Forms.Label lblcurrentIV;
+        public System.Windows.Forms.Label lblcurrentI;
+        private System.Windows.Forms.TextBox txbcurrentout;
     }
 }
 

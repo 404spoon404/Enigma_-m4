@@ -22,7 +22,9 @@ namespace engima_M4
         int[] rotorvalue = new int[5];
         int[] rotoroffset = new int[5];
         int[] rotorchoice = new int[5];
+        int[] savedrotor = new int[5];
         int livecode = 0;
+        char output = 'A';
 
         private void FillCombo(System.Object[] comboboxoptions, ComboBox boxname)
         {
@@ -51,6 +53,7 @@ namespace engima_M4
             txbrotIII.Text = "3";
             txbrotIV.Text = "10";
             txbukw.Text = "11";
+            int[] rotorchoice = { 1, 2, 3, 10, 11 };
         }
         
         
@@ -71,11 +74,11 @@ namespace engima_M4
             {
                 //check for int input, check for value <9 and check for duplicates
                 rotorchoice[0] = int.Parse(txbrotI.Text);
-                if (rotorchoice[0] > 8 | rotorchoice[0] < 1)
+                if (rotorchoice[0] > 8 || rotorchoice[0] < 1)
                 {
                     MessageBox.Show("The number needs to be between 1 and 8");
                 }
-                else if (rotorchoice[0] == rotorchoice[1] | rotorchoice[0] == rotorchoice[2])
+                else if (rotorchoice[0] == rotorchoice[1] || rotorchoice[0] == rotorchoice[2])
                 {
                     MessageBox.Show("You can only choose every rotor once");
                 }
@@ -92,11 +95,11 @@ namespace engima_M4
             {
                 //check for int input, check for value <9 and check for duplicates
                 rotorchoice[1] = int.Parse(txbrotII.Text);
-                if (rotorchoice[1] > 8 | rotorchoice[1] <1)
+                if (rotorchoice[1] > 8 || rotorchoice[1] <1)
                 {
                     MessageBox.Show("The number needs to be between 1 and 8");
                 }
-                else if (rotorchoice[1] == rotorchoice[2] | rotorchoice[1] == rotorchoice[0])
+                else if (rotorchoice[1] == rotorchoice[2] || rotorchoice[1] == rotorchoice[0])
                 {
                     MessageBox.Show("You can only choose every rotor once");
                 }
@@ -113,11 +116,11 @@ namespace engima_M4
             {
                 //check for int input, check for value <9 and check for duplicates
                 rotorchoice[2] = int.Parse(txbrotIII.Text);
-                if (rotorchoice[2] > 8 | rotorchoice[2] < 1)
+                if (rotorchoice[2] > 8 || rotorchoice[2] < 1)
                 {
                     MessageBox.Show("The number needs to be between 1 and 8");
                 }
-                else if (rotorchoice[2] == rotorchoice[1] | rotorchoice[2] == rotorchoice[0])
+                else if (rotorchoice[2] == rotorchoice[1] || rotorchoice[2] == rotorchoice[0])
                 {
                     MessageBox.Show("You can only choose every rotor once");
                 }
@@ -134,7 +137,7 @@ namespace engima_M4
             {
                 //check for int input, check for value <9 and check for duplicates
                 rotorchoice[3] = int.Parse(txbrotIV.Text);
-                if (rotorchoice[3] > 10 | rotorchoice[3] < 9)
+                if (rotorchoice[3] > 10 || rotorchoice[3] < 9)
                 {
                     MessageBox.Show("The number needs to be 9 or 10");
                 }
@@ -150,8 +153,8 @@ namespace engima_M4
             try
             {
                 //check for int input, check for value <9 and check for duplicates
-                rotorchoice[2] = int.Parse(txbukw.Text);
-                if (rotorchoice[2] > 12 | rotorchoice[2] < 11)
+                rotorchoice[4] = int.Parse(txbukw.Text);
+                if (rotorchoice[4] > 12 || rotorchoice[4] < 11)
                 {
                     MessageBox.Show("The number needs to be 11 or 12");
                 }
@@ -229,6 +232,7 @@ namespace engima_M4
             {
                 livecode = Convert.ToByte(halfway - 64);
             }
+            // IS PROBLEM (See rotor advance)
             catch (Exception exception)
             {
 
@@ -236,9 +240,61 @@ namespace engima_M4
             //for testing
             //MessageBox.Show(livecode.ToString());
 
-            //send all variables to class enigmahardware
-            Enigmahardware test = new Enigmahardware(rotorchoice, rotorvalue, rotoroffset, livecode);
-            txbcurrentout.Text = test.ToString();
+            //send all variables to class enigmahardware after input of single letter
+            //Add 65 to get an ascii value
+            //and return value to txbcurrentout
+            int test = new Enigmahardware(savedrotor).Encrypt(rotorchoice, rotorvalue, rotoroffset, livecode-1) + 65;
+            output = Convert.ToChar(test);
+            txbcurrentout.Text = Convert.ToString(output);
+            int lableI = savedrotor[0] + 65;
+            output = Convert.ToChar(lableI);
+            lblcurrentI.Text = Convert.ToString(output);
+
+            int lableII = savedrotor[1] + 65;
+            output = Convert.ToChar(lableII);
+            lblcurrentII.Text = Convert.ToString(output);
+
+            int lableIII = savedrotor[2] + 65;
+            output = Convert.ToChar(lableIII);
+            lblcurrentIII.Text = Convert.ToString(output);
+
+            int lableIV = savedrotor[3] + 65;
+            output = Convert.ToChar(lableIV);
+            lblcurrentIV.Text = Convert.ToString(output);
+
+            
+        }
+
+        private void btnstarttext_Click(object sender, EventArgs e)
+        {
+            int textchar = 0;
+            char toconvert = 'a';
+            foreach (char character in txbinputtext.Text)
+            {
+                //Get character from string, change it to an int.
+                //put int trough encryption
+                //output text in txboutputtext
+                textchar = Convert.ToByte(character) -64 ;
+                int longoutput = new Enigmahardware(savedrotor).Encrypt(rotorchoice, rotorvalue, rotoroffset, textchar - 1) + 65;
+                toconvert = Convert.ToChar(longoutput);
+                txboutputtext.Text += toconvert.ToString();
+
+                int lableI = savedrotor[0] + 65;
+                output = Convert.ToChar(lableI);
+                lblcurrentI.Text = Convert.ToString(output);
+
+                int lableII = savedrotor[1] + 65;
+                output = Convert.ToChar(lableII);
+                lblcurrentII.Text = Convert.ToString(output);
+
+                int lableIII = savedrotor[2] + 65;
+                output = Convert.ToChar(lableIII);
+                lblcurrentIII.Text = Convert.ToString(output);
+
+                int lableIV = savedrotor[3] + 65;
+                output = Convert.ToChar(lableIV);
+                lblcurrentIV.Text = Convert.ToString(output);
+            }
         }
     }
 }
