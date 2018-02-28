@@ -451,22 +451,25 @@
             this.plugboardena.AutoSize = true;
             this.plugboardena.Location = new System.Drawing.Point(626, 273);
             this.plugboardena.Name = "plugboardena";
-            this.plugboardena.Size = new System.Drawing.Size(85, 17);
+            this.plugboardena.Size = new System.Drawing.Size(92, 17);
             this.plugboardena.TabIndex = 38;
             this.plugboardena.TabStop = true;
-            this.plugboardena.Text = "radioButton1";
+            this.plugboardena.Text = "Plugboard ON";
             this.plugboardena.UseVisualStyleBackColor = true;
+            this.plugboardena.CheckedChanged += new System.EventHandler(this.plugboardena_CheckedChanged);
             // 
             // plugboardnot
             // 
             this.plugboardnot.AutoSize = true;
+            this.plugboardnot.Checked = true;
             this.plugboardnot.Location = new System.Drawing.Point(626, 297);
             this.plugboardnot.Name = "plugboardnot";
-            this.plugboardnot.Size = new System.Drawing.Size(85, 17);
+            this.plugboardnot.Size = new System.Drawing.Size(96, 17);
             this.plugboardnot.TabIndex = 39;
             this.plugboardnot.TabStop = true;
-            this.plugboardnot.Text = "radioButton2";
+            this.plugboardnot.Text = "Plugboard OFF";
             this.plugboardnot.UseVisualStyleBackColor = true;
+            this.plugboardnot.CheckedChanged += new System.EventHandler(this.plugboardnot_CheckedChanged);
             // 
             // label22
             // 
@@ -705,13 +708,16 @@
             // 
             // txbplugA
             // 
+            this.txbplugA.Enabled = false;
             this.txbplugA.Location = new System.Drawing.Point(915, 56);
             this.txbplugA.Name = "txbplugA";
             this.txbplugA.Size = new System.Drawing.Size(39, 20);
             this.txbplugA.TabIndex = 84;
+            this.txbplugA.TextChanged += new System.EventHandler(this.txbplugA_TextChanged);
             // 
             // txbplugB
             // 
+            this.txbplugB.Enabled = false;
             this.txbplugB.Location = new System.Drawing.Point(915, 79);
             this.txbplugB.Name = "txbplugB";
             this.txbplugB.Size = new System.Drawing.Size(39, 20);
@@ -719,6 +725,7 @@
             // 
             // txbplugC
             // 
+            this.txbplugC.Enabled = false;
             this.txbplugC.Location = new System.Drawing.Point(915, 104);
             this.txbplugC.Name = "txbplugC";
             this.txbplugC.Size = new System.Drawing.Size(39, 20);
@@ -726,6 +733,7 @@
             // 
             // txbplugD
             // 
+            this.txbplugD.Enabled = false;
             this.txbplugD.Location = new System.Drawing.Point(915, 130);
             this.txbplugD.Name = "txbplugD";
             this.txbplugD.Size = new System.Drawing.Size(39, 20);
@@ -733,6 +741,7 @@
             // 
             // txbplugE
             // 
+            this.txbplugE.Enabled = false;
             this.txbplugE.Location = new System.Drawing.Point(915, 155);
             this.txbplugE.Name = "txbplugE";
             this.txbplugE.Size = new System.Drawing.Size(39, 20);
@@ -740,6 +749,7 @@
             // 
             // txbplugF
             // 
+            this.txbplugF.Enabled = false;
             this.txbplugF.Location = new System.Drawing.Point(915, 179);
             this.txbplugF.Name = "txbplugF";
             this.txbplugF.Size = new System.Drawing.Size(39, 20);
@@ -747,6 +757,7 @@
             // 
             // txbplugG
             // 
+            this.txbplugG.Enabled = false;
             this.txbplugG.Location = new System.Drawing.Point(915, 204);
             this.txbplugG.Name = "txbplugG";
             this.txbplugG.Size = new System.Drawing.Size(39, 20);
@@ -754,6 +765,7 @@
             // 
             // txbplugH
             // 
+            this.txbplugH.Enabled = false;
             this.txbplugH.Location = new System.Drawing.Point(915, 226);
             this.txbplugH.Name = "txbplugH";
             this.txbplugH.Size = new System.Drawing.Size(39, 20);
@@ -761,6 +773,7 @@
             // 
             // txbplugI
             // 
+            this.txbplugI.Enabled = false;
             this.txbplugI.Location = new System.Drawing.Point(915, 251);
             this.txbplugI.Name = "txbplugI";
             this.txbplugI.Size = new System.Drawing.Size(39, 20);
@@ -768,6 +781,7 @@
             // 
             // txbplugJ
             // 
+            this.txbplugJ.Enabled = false;
             this.txbplugJ.Location = new System.Drawing.Point(1048, 52);
             this.txbplugJ.Name = "txbplugJ";
             this.txbplugJ.Size = new System.Drawing.Size(39, 20);
@@ -775,6 +789,7 @@
             // 
             // txbplugK
             // 
+            this.txbplugK.Enabled = false;
             this.txbplugK.Location = new System.Drawing.Point(1048, 75);
             this.txbplugK.Name = "txbplugK";
             this.txbplugK.Size = new System.Drawing.Size(39, 20);
@@ -782,6 +797,7 @@
             // 
             // txbplugL
             // 
+            this.txbplugL.Enabled = false;
             this.txbplugL.Location = new System.Drawing.Point(1048, 100);
             this.txbplugL.Name = "txbplugL";
             this.txbplugL.Size = new System.Drawing.Size(39, 20);
@@ -789,6 +805,7 @@
             // 
             // txbplugM
             // 
+            this.txbplugM.Enabled = false;
             this.txbplugM.Location = new System.Drawing.Point(1048, 124);
             this.txbplugM.Name = "txbplugM";
             this.txbplugM.Size = new System.Drawing.Size(39, 20);
@@ -796,6 +813,7 @@
             // 
             // txbplugN
             // 
+            this.txbplugN.Enabled = false;
             this.txbplugN.Location = new System.Drawing.Point(1048, 150);
             this.txbplugN.Name = "txbplugN";
             this.txbplugN.Size = new System.Drawing.Size(39, 20);
@@ -803,6 +821,7 @@
             // 
             // txbplugO
             // 
+            this.txbplugO.Enabled = false;
             this.txbplugO.Location = new System.Drawing.Point(1048, 176);
             this.txbplugO.Name = "txbplugO";
             this.txbplugO.Size = new System.Drawing.Size(39, 20);
@@ -810,6 +829,7 @@
             // 
             // txbplugP
             // 
+            this.txbplugP.Enabled = false;
             this.txbplugP.Location = new System.Drawing.Point(1048, 200);
             this.txbplugP.Name = "txbplugP";
             this.txbplugP.Size = new System.Drawing.Size(39, 20);
@@ -817,6 +837,7 @@
             // 
             // txbplugQ
             // 
+            this.txbplugQ.Enabled = false;
             this.txbplugQ.Location = new System.Drawing.Point(1048, 222);
             this.txbplugQ.Name = "txbplugQ";
             this.txbplugQ.Size = new System.Drawing.Size(39, 20);
@@ -824,6 +845,7 @@
             // 
             // txbplugR
             // 
+            this.txbplugR.Enabled = false;
             this.txbplugR.Location = new System.Drawing.Point(1048, 248);
             this.txbplugR.Name = "txbplugR";
             this.txbplugR.Size = new System.Drawing.Size(39, 20);
@@ -831,6 +853,7 @@
             // 
             // txbplugS
             // 
+            this.txbplugS.Enabled = false;
             this.txbplugS.Location = new System.Drawing.Point(1170, 55);
             this.txbplugS.Name = "txbplugS";
             this.txbplugS.Size = new System.Drawing.Size(39, 20);
@@ -838,6 +861,7 @@
             // 
             // txbplugT
             // 
+            this.txbplugT.Enabled = false;
             this.txbplugT.Location = new System.Drawing.Point(1170, 79);
             this.txbplugT.Name = "txbplugT";
             this.txbplugT.Size = new System.Drawing.Size(39, 20);
@@ -845,6 +869,7 @@
             // 
             // txbplugU
             // 
+            this.txbplugU.Enabled = false;
             this.txbplugU.Location = new System.Drawing.Point(1170, 104);
             this.txbplugU.Name = "txbplugU";
             this.txbplugU.Size = new System.Drawing.Size(39, 20);
@@ -852,6 +877,7 @@
             // 
             // txbplugV
             // 
+            this.txbplugV.Enabled = false;
             this.txbplugV.Location = new System.Drawing.Point(1170, 130);
             this.txbplugV.Name = "txbplugV";
             this.txbplugV.Size = new System.Drawing.Size(39, 20);
@@ -859,6 +885,7 @@
             // 
             // txbplugW
             // 
+            this.txbplugW.Enabled = false;
             this.txbplugW.Location = new System.Drawing.Point(1170, 154);
             this.txbplugW.Name = "txbplugW";
             this.txbplugW.Size = new System.Drawing.Size(39, 20);
@@ -866,6 +893,7 @@
             // 
             // txbplugX
             // 
+            this.txbplugX.Enabled = false;
             this.txbplugX.Location = new System.Drawing.Point(1170, 179);
             this.txbplugX.Name = "txbplugX";
             this.txbplugX.Size = new System.Drawing.Size(39, 20);
@@ -873,6 +901,7 @@
             // 
             // txbplugY
             // 
+            this.txbplugY.Enabled = false;
             this.txbplugY.Location = new System.Drawing.Point(1170, 204);
             this.txbplugY.Name = "txbplugY";
             this.txbplugY.Size = new System.Drawing.Size(39, 20);
@@ -880,6 +909,7 @@
             // 
             // txbplugZ
             // 
+            this.txbplugZ.Enabled = false;
             this.txbplugZ.Location = new System.Drawing.Point(1170, 227);
             this.txbplugZ.Name = "txbplugZ";
             this.txbplugZ.Size = new System.Drawing.Size(39, 20);

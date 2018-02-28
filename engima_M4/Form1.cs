@@ -17,6 +17,7 @@ namespace engima_M4
             InitializeComponent();
         }
         System.Object[] comboboxoptions = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 };
+        string[] plugboardlabels = { "txbplugA", "txbplugB", "txbplugC", "txbplugD", "txbplugE", "txbplugF", "txbplugG", "txbplugH", "txbplugI", "txbplugJ", "txbplugK", "txbplugL", "txbplugM", "txbplugN", "txbplugO", "txbplugP", "txbplugQ", "txbplugR", "txbplugS", "txbplugT", "txbplugU", "txbplugV", "txbplugW", "txbplugX", "txbplugY", "txbplugZ" };
         string[] dropdowns = { "drpintrotI", "drpintrotII", "drpintrotIII", "drpintrotIV", "drpoutrotI", "drpoutrotII", "drpoutrotIII", "drpoutrotIV" };
         string[] showcurrentlables = { "lblcurrentI", "lblcurrentII", "lblcurrentIII", "lblcurrentIV" };
         int[] rotorvalue = new int[5];
@@ -25,6 +26,7 @@ namespace engima_M4
         int[] savedrotor = new int[5];
         int livecode = 0;
         char output = 'A';
+        int[] plugboard = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25};
 
         private void FillCombo(System.Object[] comboboxoptions, ComboBox boxname)
         {
@@ -54,6 +56,7 @@ namespace engima_M4
             txbrotIV.Text = "10";
             txbukw.Text = "11";
             int[] rotorchoice = { 1, 2, 3, 10, 11 };
+
         }
         
         
@@ -230,6 +233,8 @@ namespace engima_M4
             char.TryParse(Liveinput.Text.ToUpper(), out halfway);
             try
             {
+                //should this be 65? if not why? This will never be 0(if using letters)
+                // See livecode -1
                 livecode = Convert.ToByte(halfway - 64);
             }
             // IS PROBLEM (See rotor advance)
@@ -269,7 +274,8 @@ namespace engima_M4
         {
             int textchar = 0;
             char toconvert = 'a';
-            foreach (char character in txbinputtext.Text)
+            
+            foreach (char character in txbinputtext.Text.ToUpper())
             {
                 //Get character from string, change it to an int.
                 //put int trough encryption
@@ -295,6 +301,70 @@ namespace engima_M4
                 output = Convert.ToChar(lableIV);
                 lblcurrentIV.Text = Convert.ToString(output);
             }
+        }
+
+        private void plugboardena_CheckedChanged(object sender, EventArgs e)
+        {
+            if (plugboardena.Checked)
+            {
+                for (int i = 0; i < plugboardlabels.Length; i++)
+                {
+                    //Remember this:
+                    TextBox tb = this.Controls.Find(plugboardlabels[i], true).FirstOrDefault() as TextBox;
+                    tb.Enabled=true;
+
+                }
+                
+            }
+        }
+
+        private void plugboardnot_CheckedChanged(object sender, EventArgs e)
+        {
+            if (plugboardnot.Checked)
+            {
+                for (int i = 0; i < plugboardlabels.Length; i++)
+                {
+                    //Remember this:
+                    TextBox tb = this.Controls.Find(plugboardlabels[i], true).FirstOrDefault() as TextBox;
+                    tb.Enabled = false;
+                }
+            }
+        }
+        
+        public void Plugboard (TextBox textbox)
+        {
+            char plugletter;
+            char.TryParse(textbox.Text.ToUpper(), out plugletter);
+            try
+            {
+                livecode = Convert.ToByte(plugletter - 65);
+                textbox.Text = plugletter.ToString();
+                string textname = textbox.Name;
+                //MessageBox.Show(textname);
+                //check that the plug is not referencing itself
+                if (livecode == Array.IndexOf(plugboardlabels, textname))
+                    {
+                    MessageBox.Show("Plug cannot reference itself");
+                    }
+                //change the value in the corresponding textbox
+                //and change the corresponding value in array
+                string textboxvalue = plugboardlabels[livecode];
+                int arrayposition = Array.IndexOf(plugboardlabels, textboxvalue);
+                plugboard[arrayposition] = Array.IndexOf(plugboardlabels, textname);
+                txbplugB.Text = arrayposition.ToString();
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+
+        private void txbplugA_TextChanged(object sender, EventArgs e)
+        {
+            Plugboard(txbplugA);
+            plugboard[0] = livecode;
         }
     }
 }
